@@ -1,17 +1,17 @@
 /*
  * This file is part of ChatEx
  * Copyright (C) 2020 ChatEx Team
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; either version 2
  * of the License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -34,7 +34,10 @@ public class PlayerListener implements Listener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onJoin(PlayerJoinEvent e) {
         if (Config.CHANGE_JOIN_AND_QUIT.getBoolean()) {
-            String msg = Locales.PLAYER_JOIN.getString(e.getPlayer());
+            String msg = Config.JOIN_MESSAGE_FORMAT.getString();
+            if (msg.equals("")) {
+                msg = Locales.PLAYER_JOIN.getString(e.getPlayer());
+            }
             e.setJoinMessage(Utils.replacePlayerPlaceholders(e.getPlayer(), msg));
         }
 
@@ -56,7 +59,10 @@ public class PlayerListener implements Listener {
         if (!Config.CHANGE_JOIN_AND_QUIT.getBoolean()) {
             return;
         }
-        String msg = Locales.PLAYER_QUIT.getString(e.getPlayer());
+        String msg = Config.QUIT_MESSAGE_FORMAT.getString();
+        if (msg.equals("")) {
+            msg = Locales.PLAYER_QUIT.getString(e.getPlayer());
+        }
         e.setQuitMessage(Utils.replacePlayerPlaceholders(e.getPlayer(), msg));
     }
 
@@ -65,7 +71,10 @@ public class PlayerListener implements Listener {
         if (!Config.CHANGE_JOIN_AND_QUIT.getBoolean()) {
             return;
         }
-        String msg = Locales.PLAYER_KICK.getString(e.getPlayer());
+        String msg = Config.KICK_MESSAGE_FORMAT.getString();
+        if (msg.equals("")) {
+            msg = Locales.PLAYER_KICK.getString(e.getPlayer());
+        }
         e.setLeaveMessage(Utils.replacePlayerPlaceholders(e.getPlayer(), msg));
     }
 

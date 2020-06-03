@@ -59,7 +59,10 @@ public enum Config {
     BLOCKED_WORDS("BlockedWords", Arrays.asList("shit", "@everyone"), "A list of words that should be blocked."),
     CHANGE_TABLIST_NAME("Tablist.Change", true, "Do you want to have the prefixes and suffixes in the tablist?"),
     TABLIST_FORMAT("Tablist.format", "%prefix%player%suffix", "The format of the tablist name"),
-    CHANGE_JOIN_AND_QUIT("Messages.JoinAndQuit.Enabled", false, "Do you want to change the join and the quit messages?");
+    CHANGE_JOIN_AND_QUIT("Messages.JoinAndQuit.Enabled", false, "Do you want to change the join and the quit messages?"),
+    QUIT_MESSAGE_FORMAT("Messages.JoinAndQuit.QuitMessage", "", "The format of the leave message"),
+    JOIN_MESSAGE_FORMAT("Messages.JoinAndQuit.JoinMessage", "", "The format of the join message"),
+    KICK_MESSAGE_FORMAT("Messages.JoinAndQuit.KickMessage", "", "The format of the kick message");
 
     private final Object value;
     private final String path;
